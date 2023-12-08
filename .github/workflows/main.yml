@@ -10,6 +10,8 @@ jobs:
   set_topics:
     runs-on: ubuntu-latest
     steps:
+      - name: PrintToken
+        run: echo "${{ secrets.TOKEN_GH }}"
       - name: Set topics
         run: |
           curl -L \
