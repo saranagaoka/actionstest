@@ -24,5 +24,4 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          echo $GH_TOKEN | gh auth login --with-token
-          gh api repos/saranagaoka/actiontest/topics -X PUT -F names='["sara","sara1","sara2"]'
+          gh api --oauth2_token $GH_TOKEN repos/saranagaoka/actiontest/topics -X PUT -F names='["sara","sara1","sara2"]'
