@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Set topics
         run: |
-          curl \
+          curl -L \
             -X PUT \
             -H "Authorization: token ${{ secrets.GH_TOKEN }}" \
             -H "Accept: application/vnd.github.mercy-preview+json" \
