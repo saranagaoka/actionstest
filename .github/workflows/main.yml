@@ -15,13 +15,14 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      
-      - name: Install GitHub CLI
-        run: |
-          curl -sSL https://github.com/cli/cli/releases/download/v2.4.0/gh_2.4.0_linux_amd64.tar.gz | sudo tar xz -C /usr/local/bin --strip-components=2 gh_2.4.0_linux_amd64/bin/gh
 
       - name: Set topics
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          gh api --oauth2_token $GH_TOKEN repos/saranagaoka/actiontest/topics -X PUT -F names='["sara","sara1","sara2"]'
+          curl \
+            -X PUT \
+            -H "Authorization: token $GH_TOKEN" \
+            -H "Accept: application/vnd.github.mercy-preview+json" \
+            -d '{"names": ["sara","sara1","sara2"]}' \
+            https://api.github.com/repos/saranagaoka/actiontest/topics
