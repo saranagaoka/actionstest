@@ -1,4 +1,4 @@
-name: Set Topics
+name: Set Repository Topics
 
 on:
   push:
@@ -7,22 +7,14 @@ on:
       - dev
 
 jobs:
-  build:
-    name: Set Topics
+  set_topics:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-
       - name: Set topics
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           curl \
             -X PUT \
-            -H "Authorization: token $GH_TOKEN" \
+            -H "Authorization: token ${{ secrets.GH_TOKEN }}" \
             -H "Accept: application/vnd.github.mercy-preview+json" \
-            -d '{"names": ["sara","sara1","sara2"]}' \
-            https://api.github.com/repos/saranagaoka/actiontest/topics
+            -d '{"names": ["topic1","topic2","topic3"]}' \
+            https://api.github.com/repos/owner/repo/topics
