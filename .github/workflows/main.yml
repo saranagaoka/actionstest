@@ -2,7 +2,7 @@ name: Set Repository Topics
 
 on:
   schedule:  
-    - cron: '33 15 * 11-12 *' # This line schedules the job
+    - cron: '47 15 * 11-12 *' # This line schedules the job
   push:
     branches:
       - prod
@@ -22,7 +22,7 @@ jobs:
             -H "Authorization: Bearer ${{ secrets.GH_TOKEN }}" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
             https://api.github.com/repos/saranagaoka/actionstest/topics \
-            -d '{"names":["octocat","atom","electron","api", "pies"]}'
+            -d '{"names":["octocat","atom","electron","api", "pies", "scheduled"]}'
             
 
         
