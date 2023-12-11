@@ -1,6 +1,8 @@
 name: Set Repository Topics
 
 on:
+  schedule:  
+    - cron: '33 15 * 11-2 *' # This line schedules the job
   push:
     branches:
       - prod
